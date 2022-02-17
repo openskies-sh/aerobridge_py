@@ -9,20 +9,20 @@ class AerobridgeClient():
 
 	'''
 
-	def __init__(self, url, token, authority_url):
+	def __init__(self, aerobridge_url, token, authority_url):
 		'''
 		Declare your Aerobridge instance, token and the url (optional). 
 		'''		
 		self.token = token
-		self.securl = url if url else 'https://aerobridgetestflight.herokuapp.com/api/v1/'		
+		self.aerobridge_url = aerobridge_url if aerobridge_url else 'https://aerobridgetestflight.herokuapp.com/api/v1/'		
 		self.session = requests.Session()
 		self.authority_url = authority_url
 		
 	def ping_aerobridge(self):
 		''' This method pings and Aerobridge instance '''
-		securl = self.securl+ 'ping/'
+		aerobridge_url = self.aerobridge_url+ 'ping/'
 		headers = {'Authorization': 'Token '+ self.token}
-		r = self.session.get(securl, headers=headers)
+		r = self.session.get(aerobridge_url, headers=headers)
 		return r
         
 	def get_authority_public_key(self):
