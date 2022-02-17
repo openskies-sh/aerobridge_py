@@ -10,4 +10,4 @@ This repository is the python client for the [Aerobridge Management Server API](
 
 ## Test drive
 
-Go to [Aerobridge.io](www.aerobridge.io) for a test drive of the stack.
+Go to [Aerobridge.io](https://www.aerobridge.io) for a test drive of the stack.
