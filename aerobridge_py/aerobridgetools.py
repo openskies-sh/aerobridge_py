@@ -48,3 +48,7 @@ class AerobridgeClient():
 	def get_aircraft_by_flight_controller_id(self, flight_controller_id):
 		''' This method downloads all aircrafts in the management server '''
 		raise NotImplementedError
+		
+	def get_firmware_by_flight_controller_id(self, flight_controller_id):
+		''' This method downloads all aircrafts in the management server '''
+		raise NotImplementedError
