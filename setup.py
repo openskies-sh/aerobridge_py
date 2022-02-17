@@ -16,7 +16,7 @@ setup_args = dict(
     packages=find_packages(),
     author='Dr. Hrishikesh Ballal',
     author_email='hrishikeshballal@yahoo.com',
-    keywords=['Managmeent Server', 'Aerobridge', 'Drones', 'Drone'],
+    keywords=['Management Server', 'Aerobridge', 'Drones', 'Drone'],
     url='https://github.com/openskies-sh/aerobridge_py',
     download_url='https://pypi.org/project/aerobridge_py/'
 )
