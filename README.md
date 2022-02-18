@@ -4,8 +4,8 @@ This repository is the python client for the [Aerobridge Management Server API](
 
 ## Usage Instructions
 
-1. Install requirements `pip install aerobridgepy`
-2. In your code use `from aerobridgepy import AerobridgeClient`
+1. Install requirements `pip install aerobridge`
+2. In your code use `from aerobridge import AerobridgeClient`
 3. 🎉
 
 ## Test drive
