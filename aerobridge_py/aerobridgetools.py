@@ -140,12 +140,30 @@ class AerobridgeClient():
                     operation_id (uuid): The uuid of a flight operation in your Aerobridge instance
 
             Returns:
-                    plan_details (dict): Details of a flight plan, see https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/openskies-sh/aerobridge/master/api/aerobridge-1.0.0.resolved.yaml#operation/retrieveFlightPlan
+                    plan_details (json): Details of a flight plan, see https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/openskies-sh/aerobridge/master/api/aerobridge-1.0.0.resolved.yaml#operation/retrieveFlightPlan
 		'''
 
 		securl = self.aerobridge_url + 'gcs/flight-operations/' + operation_id + '/permission'
 		headers = {'Authorization': 'Bearer '+ self.token}
 		r = self.session.put(securl, headers= headers)
+		return r
+
+	def upload_flight_log(self, operation_id:UUID, raw_log:str):
+		'''
+		This method uploads a flight log associated with a operation ID
+
+            Parameters:
+                    operation_id (uuid): The uuid of a flight operation in your Aerobridge instance
+                    raw_log (str): The raw log file as retrieved from the vehicle.
+
+            Returns:
+                    log_details (json): Details of the newly created flight log, see https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/openskies-sh/aerobridge/master/api/aerobridge-1.0.0.resolved.yaml#operation/createFlightLog
+		'''
+
+		securl = self.aerobridge_url + 'gcs/flight-logs'
+		headers = {'Authorization': 'Bearer '+ self.token}
+		payload = {'operation':operation_id, 'raw_log':raw_log}
+		r = self.session.post(securl, headers= headers,json = payload)
 		return r
 
 	def download_flight_plan(self, plan_id):
@@ -156,7 +174,7 @@ class AerobridgeClient():
                     plan_id (uuid): The uuid of a flight plan in your Aerobridge instance
 
             Returns:
-                    plan_details (dict): Details of a flight plan, see https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/openskies-sh/aerobridge/master/api/aerobridge-1.0.0.resolved.yaml#operation/retrieveFlightPlan
+                    plan_details (json): Details of a flight plan, see https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/openskies-sh/aerobridge/master/api/aerobridge-1.0.0.resolved.yaml#operation/retrieveFlightPlan
 		'''
 
 		securl = self.aerobridge_url + 'gcs/flight-plans/' + plan_id
@@ -172,7 +190,7 @@ class AerobridgeClient():
                     registered_flight_module_id (str): The id of the flight controller 
 
             Returns:
-                    aircraft_detail (dict): Details of an aircraft, see https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/openskies-sh/aerobridge/master/api/aerobridge-1.0.0.resolved.yaml#operation/Get%20Single%20Aircraft%20(RFM%20ID)
+                    aircraft_detail (json): Details of an aircraft, see https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/openskies-sh/aerobridge/master/api/aerobridge-1.0.0.resolved.yaml#operation/Get%20Single%20Aircraft%20(RFM%20ID)
 		'''
 		
 		securl = self.aerobridge_url + 'registry/aircraft/rfm/' + registered_flight_module_id
@@ -189,7 +207,7 @@ class AerobridgeClient():
                     registered_flight_module_id (str): The id of the flight controller 
 
             Returns:
-                    firmware_detail (dict): Details of an aircraft firmware, see https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/openskies-sh/aerobridge/master/api/aerobridge-1.0.0.resolved.yaml#operation/Get%20Aircraft%20firmware%20by%20RFM%20ID
+                    firmware_detail (json): Details of an aircraft firmware, see https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/openskies-sh/aerobridge/master/api/aerobridge-1.0.0.resolved.yaml#operation/Get%20Aircraft%20firmware%20by%20RFM%20ID
 		'''
 		
 		
